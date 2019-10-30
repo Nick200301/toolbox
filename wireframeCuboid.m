@@ -1,4 +1,9 @@
 function wireframeCuboid(eyeDistance, a, b, c, d, e, f, g, h)
+    %plots a wireframe of a cuboid with eight vertices as the input. It
+    %will connect with lines the first four vertices in order, then the
+    %last four vertices and will then connect the first with the fifth
+    %vertice, the second with the sixth, etc. It plots the projection onto
+    %a plane.
 
     vertices = [a; b; c; d; e; f; g; h;];
 

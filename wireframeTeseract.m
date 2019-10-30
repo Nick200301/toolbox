@@ -1,5 +1,5 @@
 function wireframeTeseract(eyeDistance, cubeScalar, a, b, c, d)
-    %make sure that a b c d make a square
+    %plots a teseract in 3d and plots the projection onto a plane.
 
     sidelengthSquare = sqrt( ( b(1) - a(1) ).^2 + ( b(2) - a(2) ).^2 + ( b(3) - a(3) ).^2 );
 

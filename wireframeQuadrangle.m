@@ -1,5 +1,7 @@
 function wireframeQuadrangle(eyeDistance, varargin)
-%enter the vertices of the 2D shape in a counter-clockwise direction
+    %plots a wireframe of a surface defined by the inputted points. The
+    %program connects these points in the order of input. It plots the projection onto
+    %a plane.
 
     vertices = zeros(length(varargin), 3);
     for vertice = [1:length(varargin)]
