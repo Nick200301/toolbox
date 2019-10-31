@@ -12,4 +12,6 @@ function projectedPoint =  projection(eyeDistance ,point)
     hold on
     
     plotPoint('rd', [-eyeDistance 0 0])
+    plotPoint('r.', point)
+    plotPoint('r.', projectedPoint)
 end
