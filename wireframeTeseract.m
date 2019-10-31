@@ -1,5 +1,14 @@
 function wireframeTeseract(eyeDistance, cubeScalar, a, b, c, d)
-    %plots a teseract in 3d and plots the projection onto a plane.
+    %Expects a distance for the viewpoint, called eyeDistance, from the
+    %yz-plane, a scalar for the second cube of the teseract and four 1x3
+    %arrays that represent points in 3D. These points should make a square.
+    %wireframeTeseract() will construct a cube from the input point, a
+    %second cube that is equal to the first cube scaled by a factor equal
+    %to the parameter cubeScalar with the centre of the cube as an anchor
+    %point. Then the respective vertices are connected by lines to make a
+    %teseract. This teseract is plotted and then projected onto the viewing
+    %plane with respect to a viewpoint definde by the parameter
+    %eyeDistance.
 
     sidelengthSquare = sqrt( ( b(1) - a(1) ).^2 + ( b(2) - a(2) ).^2 + ( b(3) - a(3) ).^2 );
 
