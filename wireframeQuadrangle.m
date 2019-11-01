@@ -1,4 +1,4 @@
-function wireframeQuadrangle(eyeDistance, varargin)
+function wireframeQuadrangle(eyeDistance, style, varargin)
     %Expects a distance for the viewpoint, called eyeDistance, from the
     %yz-plane and any number of 1x3 arrays that represent points in 3D.
     %wireframeQuadrangle() connects the points in order of input (input 1
@@ -14,9 +14,9 @@ function wireframeQuadrangle(eyeDistance, varargin)
     dimVertices = size(vertices);
     
     for i = [1:dimVertices(1) - 1]
-        wireframeLine(eyeDistance, vertices(i,:), vertices(i + 1,:))
+        wireframeLine(eyeDistance, style, vertices(i,:), vertices(i + 1,:))
     end
-    wireframeLine(eyeDistance, vertices(dimVertices(1),:), vertices(1,:))
+    wireframeLine(eyeDistance, style, vertices(dimVertices(1),:), vertices(1,:))
 
     view([-40 9])
 end

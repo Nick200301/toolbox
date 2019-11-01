@@ -1,4 +1,4 @@
-function wireframeCuboid(eyeDistance, a, b, c, d, e, f, g, h)
+function wireframeCuboid(eyeDistance, style, a, b, c, d, e, f, g, h)
     %Expects a distance for the viewpoint, called eyeDistance, from the
     %yz-plane and eight 1x3 arrays that represent points in 3D.
     %wireframeCuboid() connects the first four points to make a quadrangle
@@ -9,11 +9,11 @@ function wireframeCuboid(eyeDistance, a, b, c, d, e, f, g, h)
     
     vertices = [a; b; c; d; e; f; g; h;];
 
-    wireframeQuadrangle(eyeDistance, a, b, c, d)
-    wireframeQuadrangle(eyeDistance, e, f, g, h)
+    wireframeQuadrangle(eyeDistance, style, a, b, c, d)
+    wireframeQuadrangle(eyeDistance, style, e, f, g, h)
 
     for i = [1:4]
-        wireframeLine(eyeDistance, vertices(i,:), vertices(i + 4,:))
+        wireframeLine(eyeDistance, style, vertices(i,:), vertices(i + 4,:))
     end
 %     campos([-eyeDistance 0 0])
 %     camtarget([-4 2 2])

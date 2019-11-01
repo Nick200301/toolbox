@@ -1,4 +1,4 @@
-function wireframeLine(eyeDistance, a, b)
+function wireframeLine(eyeDistance, style, a, b)
     %Expects a distance for the viewpoint, called eyeDistance, from the
     %yz-plane and two 1x3 arrays that represents two points in 3D.
     %wireframeLine() plots a line between the two input points and plots the projection of that
@@ -9,8 +9,8 @@ function wireframeLine(eyeDistance, a, b)
     projectionB = projection(eyeDistance, b);
 
     
-    plotLine(a, b)
-    plotLine(projectionA, projectionB)
+    plotLine(style, a, b)
+    plotLine(style, projectionA, projectionB)
     
     
     

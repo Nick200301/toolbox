@@ -1,4 +1,4 @@
-function wireframeTeseract(eyeDistance, cubeScalar, a, b, c, d)
+function wireframeTeseract(eyeDistance, style, cubeScalar, a, b, c, d)
     %Expects a distance for the viewpoint, called eyeDistance, from the
     %yz-plane, a scalar for the second cube of the teseract and four 1x3
     %arrays that represent points in 3D. These points should make a square.
@@ -17,7 +17,7 @@ function wireframeTeseract(eyeDistance, cubeScalar, a, b, c, d)
     g = c + [sidelengthSquare 0 0];
     h = d + [sidelengthSquare 0 0];
 
-    wireframeCuboid(eyeDistance, a, b, c, d, e, f, g, h)
+    wireframeCuboid(eyeDistance, style, a, b, c, d, e, f, g, h)
 
     %translate the midpoint of the cube to the origin
 
@@ -35,10 +35,10 @@ function wireframeTeseract(eyeDistance, cubeScalar, a, b, c, d)
     verticesSmallCube = [a; b; c; d; e; f; g; h;];
     verticesBigCube = [at; bt; ct; dt; et; ft; gt; ht;];
 
-    wireframeCuboid(eyeDistance, at, bt, ct, dt, et, ft, gt, ht);
+    wireframeCuboid(eyeDistance, style, at, bt, ct, dt, et, ft, gt, ht);
 
     for i = [1:8]
-        wireframeLine(eyeDistance, verticesSmallCube(i,:), verticesBigCube(i,:))
+        wireframeLine(eyeDistance, style, verticesSmallCube(i,:), verticesBigCube(i,:))
     end
 
 end
