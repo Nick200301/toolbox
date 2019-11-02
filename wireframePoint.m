@@ -1,4 +1,4 @@
-function [projectedPoint] = wireframePoint(eyeDistance, a)
+function [projectedPoint] = wireframePoint(original, eyeDistance, a)
     %Expects a distance for the viewpoint, called eyeDistance, from the
     %yz-plane and a 1x3 array that represents a point in 3D.
     %projectedPoint() plots the input point in 3D and also plots the projection onto a plane
@@ -11,6 +11,8 @@ function [projectedPoint] = wireframePoint(eyeDistance, a)
     eyePoint = [-eyeDistance 0 0];
 
     plotPoint('rd', eyePoint)
-    plotPoint('r.', a)
+    if original == 1
+        plotPoint('r.', a)
+    end
     plotPoint('r.', projection(eyeDistance, a))
 end

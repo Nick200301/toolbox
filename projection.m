@@ -17,6 +17,7 @@ function projectedPoint =  projection(eyeDistance ,point)
     plane.FaceAlpha = 'Flat';
     view(3)
     axis([-10 10 -10 10 -10 10])
+    grid
     hold on
     
     plotPoint('rd', [-eyeDistance 0 0])

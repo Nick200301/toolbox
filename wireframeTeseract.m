@@ -1,4 +1,4 @@
-function wireframeTeseract(eyeDistance, style, cubeScalar, a, b, c, d)
+function wireframeTeseract(original, eyeDistance, style, cubeScalar, rotation, translation, a, b, c, d)
     %Expects a distance for the viewpoint, called eyeDistance, from the
     %yz-plane, a scalar for the second cube of the teseract and four 1x3
     %arrays that represent points in 3D. These points should make a square.
@@ -17,8 +17,6 @@ function wireframeTeseract(eyeDistance, style, cubeScalar, a, b, c, d)
     g = c + [sidelengthSquare 0 0];
     h = d + [sidelengthSquare 0 0];
 
-    wireframeCuboid(eyeDistance, style, a, b, c, d, e, f, g, h)
-
     %translate the midpoint of the cube to the origin
 
     midpointCube = 0.5 .* ((0.5 .* (b + a)) + (0.5 .* (f + e))) + [0 0 (sidelengthSquare / 2)];
@@ -35,10 +33,54 @@ function wireframeTeseract(eyeDistance, style, cubeScalar, a, b, c, d)
     verticesSmallCube = [a; b; c; d; e; f; g; h;];
     verticesBigCube = [at; bt; ct; dt; et; ft; gt; ht;];
 
-    wireframeCuboid(eyeDistance, style, at, bt, ct, dt, et, ft, gt, ht);
+    if ~isempty(rotation)
+        max_values = max(verticesSmallCube);
+        min_values = min(verticesSmallCube);
+        midpoint = (max_values + min_values) / 2;
+        for point = 1:8
+            verticesSmallCube(point,:) = my_rotate(verticesSmallCube(point,:) - midpoint, rotation) + midpoint;
+        end
+    end
+    
+    if ~isempty(translation)
+        verticesSmallCube = verticesSmallCube + translation;
+    end
+    
+    if ~isempty(rotation)
+        max_values = max(verticesBigCube);
+        min_values = min(verticesBigCube);
+        midpoint = (max_values + min_values) / 2;
+        for point = 1:8
+            verticesBigCube(point,:) = my_rotate(verticesBigCube(point,:) - midpoint, rotation) + midpoint;
+        end
+    end
+    
+    if ~isempty(translation)
+        verticesBigCube = verticesBigCube + translation;
+    end
+    
+    a = verticesSmallCube(1,:);
+    b = verticesSmallCube(2,:);
+    c = verticesSmallCube(3,:);
+    d = verticesSmallCube(4,:);
+    e = verticesSmallCube(5,:);
+    f = verticesSmallCube(6,:);
+    g = verticesSmallCube(7,:);
+    h = verticesSmallCube(8,:);
+    at = verticesBigCube(1,:);
+    bt = verticesBigCube(2,:);
+    ct = verticesBigCube(3,:);
+    dt = verticesBigCube(4,:);
+    et = verticesBigCube(5,:);
+    ft = verticesBigCube(6,:);
+    gt = verticesBigCube(7,:);
+    ht = verticesBigCube(8,:);
+    
+    wireframeCuboid(original, eyeDistance, style, {}, [], a, b, c, d, e, f, g, h)
+    wireframeCuboid(original, eyeDistance, style, {}, [], at, bt, ct, dt, et, ft, gt, ht);
 
-    for i = [1:8]
-        wireframeLine(eyeDistance, style, verticesSmallCube(i,:), verticesBigCube(i,:))
+    for i = 1:8
+        wireframeLine(original, eyeDistance, style, {}, [], verticesSmallCube(i,:), verticesBigCube(i,:))
     end
 
 end
